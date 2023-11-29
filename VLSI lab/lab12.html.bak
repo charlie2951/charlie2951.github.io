@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>lab12</title>
+  </head>
+  <body>
+    <p><b>Lab-12</b> </p>
+    <p style="text-align: justify;"><i>Transient Analysis of NAND gate using
+        SPICE (TINA) .</i></p>
+    <p><b>Software Required:</b><br>
+      1. TINA-9.2 (can be downloaded freely)<br>
+      2. PC in Windows Platform</p>
+    <p><u><i>Procedure: </i></u></p>
+    <p>Same as Lab-10 and 11. Design the circuit as per diagram. Do not forget
+      to rotate PMOS vertically as per diagram.</p>
+    <div style="text-align: center;"><img src="nand22.png" alt="" style="width: 251px; height: 167px;"></div>
+    <div style="text-align: justify;">1.&nbsp;&nbsp;&nbsp; Open TINA-9 in
+      computer and design the schematic as shown in diagram. You have to rotate
+      and mirror PMOS transistors.<br>
+      2.&nbsp;&nbsp;&nbsp; &nbsp;Change each MOSFET type to BSIM-3 model from
+      component property window under “type” tab.<br>
+      3.&nbsp;&nbsp;&nbsp; In property window of MOSFET, select Length L=1u and
+      width W=10u for all MOSFET.<br>
+      4.&nbsp;&nbsp;&nbsp; Rename the input voltage as VA and VB under property
+      tab. Select type as square wave with DC level 1.5V. Under square wave
+      option, select amplitude 1.5V, frequency 1M (1MHZ) and rise/fall time as
+      default 1n. Do the same for source VB but take different frequency such as
+      1.5M.<br>
+      <br>
+      5.&nbsp;&nbsp;&nbsp; &nbsp;Select supply voltage VS1 value to 3Volt as
+      shown in fig.<br>
+      <br>
+      6.&nbsp;&nbsp;&nbsp; Connect one load capacitor of value 10pf to 100pf
+      range at the output node as shown in Fig. <br>
+      <br>
+      7.&nbsp;&nbsp;&nbsp; Connect one voltmeter to display output voltage.<br>
+      <br>
+      8.&nbsp;&nbsp;&nbsp; For more details settings/how to change/select MOSFET
+      model etc. see previous expt. manual (CMOS inverter).<br>
+      <br>
+      9.&nbsp;&nbsp;&nbsp; When circuit is completed and ready for simulation
+      then go to Analysis -&gt; transient -&gt; set end display time to 4u (4
+      micro sec).<br>
+      <br>
+      10.&nbsp;&nbsp;&nbsp; Go to View-&gt; separate curve option from display
+      window (graph) to display each wave separately. Now verify the truth table
+      of NAND gate. </div>
+    <div style="text-align: center;"><img src="nandres.png" alt="" style="width: 250px; height: 198px;"></div>
+    <div style="text-align: center;"><br>
+    </div>
+  </body>
+</html>

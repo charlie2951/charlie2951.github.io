@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>lab07</title>
+  </head>
+  <body>
+    <p><b>Lab-07</b></p>
+    <p><i>Design of 4-bit asynchronous counter (Up and down both)</i></p>
+    <p>*Note: You can use the same testbench which was used in Lab-6.</p>
+    <p><span style="color: #006600;">// Code your design here<br>
+        //upcounter<br>
+        module async(count,rst,clk);<br>
+        output reg [3:0] count;<br>
+        input rst,clk;<br>
+        initial count=0;<br>
+        &nbsp;&nbsp; <br>
+        always @(posedge clk)<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[0]=~count[0];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge ~count[0])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[1]=~count[1];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge ~count[1])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[2]=~count[2];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge ~count[2])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[3]=~count[3];<br>
+        end<br>
+        &nbsp; <br>
+        endmodule</span><br>
+      <br>
+      <span style="color: #660000;">//downcounter<br>
+        // Code your design here<br>
+        module async(count,rst,clk);<br>
+        output reg [3:0] count;<br>
+        input rst,clk;<br>
+        initial count=0;<br>
+        &nbsp;&nbsp; <br>
+        always @(posedge clk)<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[0]=~count[0];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge count[0])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[1]=~count[1];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge count[1])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[2]=~count[2];<br>
+        end<br>
+        &nbsp; <br>
+        &nbsp; always @(posedge count[2])<br>
+        begin<br>
+        &nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp; else<br>
+        &nbsp; count[3]=~count[3];<br>
+        end<br>
+        &nbsp; <br>
+        endmodule</span></p>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>lab03</title>
+  </head>
+  <body>
+    <p>Lab-03</p>
+    <p><i>SR Flip flop using Behavioral modeling</i></p>
+    <p><span style="color: #cc0000;">//design code<br>
+        module srff(q,qb,s,r,clk);<br>
+        input s,r,clk;<br>
+        output reg q,qb;<br>
+        initial q=0;<br>
+        initial qb=1;<br>
+        always @(posedge clk)<br>
+        begin<br>
+        if(s==0 &amp; r==0)<br>
+        begin<br>
+        q=q;<br>
+        qb=qb;<br>
+        end<br>
+        else if(s==0 &amp; r==1)<br>
+        begin<br>
+        q=0;<br>
+        qb=1;<br>
+        end<br>
+        else if(s==1 &amp; r==0)<br>
+        begin<br>
+        q=1;<br>
+        qb=0;<br>
+        end<br>
+        else<br>
+        begin<br>
+        q=1'bx;<br>
+        qb=1'bx;<br>
+        end<br>
+        end<br>
+        endmodule</span><br>
+      <br>
+      <span style="color: #000099;">//testbench code<br>
+        module srff_tb();<br>
+        reg s,r,clk;<br>
+        wire q,qb;<br>
+        srff L0(q,qb,s,r,clk);<br>
+        initial begin<br>
+        clk=0;<br>
+        s=0;r=0;#20;<br>
+        s=0;r=1;#20;<br>
+        s=1;r=0;#20;<br>
+        s=1;r=1;#100;<br>
+        $finish;<br>
+        end<br>
+        always #10 clk=!clk;<br>
+        endmodule</span></p>
+  </body>
+</html>

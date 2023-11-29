@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>lab05</title>
+  </head>
+  <body>
+    <p><b>Lab-05</b></p>
+    <p style="text-align: justify;"><i>Design of 1KB x 8 RAM and perform
+        READ/WRITE operation</i></p>
+    <p><span style="color: #990000;">//RAM design<br>
+        /code your verilog design here.<br>
+        //1kb x 8<br>
+        module ram(data,addr,we,clk,en,dout);<br>
+        &nbsp;&nbsp;&nbsp; input [7:0] data;<br>
+        &nbsp;&nbsp;&nbsp; input [9:0] addr;<br>
+        &nbsp;&nbsp;&nbsp; input we;<br>
+        &nbsp;&nbsp;&nbsp; input clk,en;<br>
+        &nbsp;&nbsp;&nbsp; output reg[7:0] dout;<br>
+        &nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp; reg [7:0] ram[1023:0];<br>
+        &nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; always @(posedge clk) begin<br>
+        &nbsp;&nbsp;&nbsp; if(en)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(we)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ram[addr]=data;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dout=ram[addr];<br>
+        &nbsp;&nbsp;&nbsp; else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dout=8'bz;<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        endmodule</span><i><br>
+        <br>
+        <br>
+      </i><span style="color: #000099;">//RAM testbench<br>
+        //code your test bench here. <br>
+        //remember to name the dump file as designname.vcd.<br>
+        module ram_tb;<br>
+        &nbsp;&nbsp;&nbsp; reg we,clk,en;<br>
+        &nbsp;&nbsp;&nbsp; reg[7:0] data;<br>
+        &nbsp;&nbsp;&nbsp; reg[9:0] addr;<br>
+        &nbsp;&nbsp;&nbsp; wire[7:0] dout;<br>
+        &nbsp;&nbsp;&nbsp; ram DUT(data,addr,we,clk,en,dout);<br>
+        &nbsp;&nbsp;&nbsp; initial begin<br>
+        &nbsp;&nbsp;&nbsp; clk=0;<br>
+        &nbsp;&nbsp;&nbsp; en=1;<br>
+        &nbsp;&nbsp;&nbsp; we=1;<br>
+        &nbsp;&nbsp;&nbsp; #10;<br>
+        &nbsp;&nbsp;&nbsp; en=1;<br>
+        &nbsp;&nbsp;&nbsp; data=32;<br>
+        &nbsp;&nbsp;&nbsp; addr=10;<br>
+        &nbsp;&nbsp;&nbsp; #10;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data=12;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addr=20;<br>
+        &nbsp;&nbsp;&nbsp; #10;<br>
+        &nbsp;&nbsp;&nbsp; we=0;<br>
+        &nbsp;&nbsp;&nbsp; addr=10;<br>
+        &nbsp;&nbsp;&nbsp; #10;<br>
+        &nbsp;&nbsp;&nbsp; addr=20;<br>
+        &nbsp;&nbsp;&nbsp; #10 en=0;<br>
+        &nbsp;&nbsp;&nbsp; #20 en=1;<br>
+        &nbsp;&nbsp;&nbsp; $finish;<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp; always #5 clk=~clk;<br>
+        endmodule</span><i><br>
+      </i></p>
+  </body>
+</html>

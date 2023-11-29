@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>lab02</title>
+  </head>
+  <body>
+    <p><b>Lab-02</b></p>
+    <p><i>Design of 4-bit adder using 1-bit full adder</i></p>
+    <p style="text-align: justify;">Note: In design.sv window in edaplayground,
+      1st paste 1bit adder design code, then paste 4bit adder design code just
+      below this. Do not create a new tab/file. Place testbench code in
+      testbench.sv window.</p>
+    <p style="text-align: justify;">*Copy 1-bit adder design code fromLab-01</p>
+    <p style="text-align: justify;"><span style="color: #330099;">//4bit adder
+        using 1bit adder<br>
+        //let module name of 1bit adder is fa1<br>
+        //design code<br>
+        module fa4(s,co,a,b);<br>
+        input [3:0] a,b;<br>
+        output [3:0] s;<br>
+        output co;<br>
+        wire w1,w2,w3;<br>
+        //call 1bit adder module and defn connection<br>
+        fa1 U0 (s[0],w1,a[0],b[0],0);<br>
+        fa1 U1 (s[1],w2,a[1],b[1],w1);<br>
+        fa1 U2 (s[2],w3,a[2],b[2],w2);<br>
+        fa1 U3 (s[3],co,a[3],b[3],w3);<br>
+        endmodule</span></p>
+    <p style="text-align: justify;"><span style="color: #330099;">//testbench
+        code<br>
+        module fa4_tb();<br>
+        reg [3:0]a,b;<br>
+        wire [3:0] s;<br>
+        wire co;<br>
+        fa4 U0 (s,co,a,b);<br>
+        initial begin<br>
+        $dumpfile("dump.vcd");<br>
+        $dumpvars;<br>
+        a=2;b=3;<br>
+        #20;<br>
+        a=1;b=4;<br>
+        #20;<br>
+        a=4;b=6;<br>
+        #20;<br>
+        $finish;<br>
+        end<br>
+        endmodule</span></p>
+    <p style="text-align: justify;">** Note: <span style="color: #330099;"><span
+          style="color: black;"><i>$dumpfile("dump.vcd"); $dumpvars;</i> are
+          simulator specific commands used to record simulation data. These
+          commands might not be required in other Verilog simulator.</span><br>
+      </span></p>
+  </body>
+</html>

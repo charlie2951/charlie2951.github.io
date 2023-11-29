@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lab11</title>
+  </head>
+  <body>
+    <p><b>Lab-11</b> </p>
+    <p style="text-align: justify;"><i>Determination of Voltage transfer
+        characteristics and transient analysis of CMOS Inverter using SPICE
+        Simulation (TINA)</i></p>
+    <p><b>Software Required:</b><br>
+      1. TINA-9.2 (can be downloaded freely)<br>
+      2. PC in Windows Platform</p>
+    <p><i>Data taken:</i></p>
+    <p style="text-align: justify;">Width(NMOS)=2u, W (PMOS)=4u<br>
+      L=500n <br>
+      Model: BSIM-3<br>
+      Supply voltage=5V<br>
+      Input Voltage VS1 varies in Between 0V to 5V.<br>
+      Two voltmeter used to plot input and output side graph.<br>
+      *Note: You need to rotate the PMOS because source will be at top.</p>
+    <p style="text-align: justify;"><i>A. DC Analysis</i></p>
+    <p style="text-align: justify;">Procedure: Connect the circuit as per
+      previous guideline (Lab-10). Vary input voltage VS1 as per previous method
+      and observe output. Simulation setup is same as lab-10.</p>
+    <div style="text-align: center;"><img src="cmos.png" alt="qq" title="qq" style="width: 263px; height: 259px;"></div>
+    <div style="text-align: center;"><img src="vtc.png" alt="" style="width: 223px; height: 179px;"></div>
+    <div style="text-align: center;"><br>
+    </div>
+    <div style="text-align: justify;"><i>B.Transient Analysis</i></div>
+    <div style="text-align: justify;">Same diagram used for CMOS inverter
+      simulation in previous experiment will be used with minor modification.
+      Delete the input DC voltage source and connect a voltage generator VG1 in
+      the same place. Also add one capacitor at output node and change the value
+      to 10p. Make sure that supply voltage VS2 is set to 5V DC.<i><br>
+      </i></div>
+    <div style="text-align: center;"><img src="tran.png" alt="" style="width: 237px; height: 208px;"></div>
+    <div style="text-align: justify;">1. Double click on voltage generator
+      symbol, click on signal. By default it is set to Unit step. Click on (…)
+      and select Square wave as shown below. Set the parameter as displayed.
+      Click OK.<i><br>
+      </i></div>
+    <div style="text-align: center;"><img src="t2.png" alt="" style="width: 239px; height: 142px;"></div>
+    <div style="text-align: justify;">2. Again in the Voltage generator property
+      list, set DC level to 2.5V. Click OK.</div>
+    <div style="text-align: center;"><img src="t3.png" alt="" style="width: 222px; height: 129px;"></div>
+    <div style="text-align: justify;">3.Now from Analysis menu, Select
+      Transient. Configure as displayed., Click OK. Result will be displayed.</div>
+    <div style="text-align: center;"><img src="t4.png" alt="" style="width: 226px; height: 137px;"></div>
+    <div style="text-align: center;"><img src="t5.png" alt="" style="width: 261px; height: 209px;"></div>
+    <div style="text-align: justify;">*Note: You may click on View-Separate
+      curve to separate the input and output.</div>
+    <p style="text-align: justify;"><br>
+    </p>
+    <p style="text-align: justify;"><br>
+    </p>
+  </body>
+</html>
