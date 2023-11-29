@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>lab09</title>
+  </head>
+  <body>
+    <p><b>Lab-09</b></p>
+    <p><i>Design of a simple two-way traffic light controller using FSM</i></p>
+    <div style="text-align: center;"><img src="Trafficlight.png" alt="qq" title="qq"
+        style="width: 285px; height: 155px;"></div>
+    <div style="text-align: justify;"><br>
+    </div>
+    <div style="text-align: justify;"><span style="color: #000099;">// Code your
+        design here<br>
+        //traffic light controller-2way<br>
+        //using FSM</span><br>
+      <div style="text-align: left;">module
+        traffic_light(rst,clk,h_red,h_yellow,h_green,b_red,b_yellow,b_green);</div>
+      <div style="text-align: left;">&nbsp; input rst,clk;<br>
+        &nbsp; output reg h_red, h_yellow, h_green, b_red, b_yellow,b_green;<br>
+        &nbsp; reg [4:0] count;<br>
+        &nbsp; reg [1:0] state;<br>
+        &nbsp; parameter s0=0,s1=1,s2=2,s3=3;<br>
+        &nbsp; initial state=0;<br>
+        &nbsp; initial count=0;<br>
+        &nbsp; initial h_red=0;<br>
+        &nbsp; initial h_yellow=0;<br>
+        &nbsp; initial h_green=0;<br>
+        &nbsp; initial b_red=0;<br>
+        &nbsp; initial b_yellow=0;<br>
+        &nbsp; initial b_green=0;<br>
+        &nbsp; always @(posedge clk) begin<br>
+        &nbsp;&nbsp;&nbsp; if(rst)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s0;<br>
+        &nbsp;&nbsp;&nbsp; else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case(state)<br>
+        &nbsp;s0: //make h_green on for 20sec <br>
+        &nbsp; begin&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; if(count==20) begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s1; //go to other state if count
+        expire<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=count+1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s0; //wait until 20sec<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+        &nbsp; s1: //make h_yellow on for 10sec <br>
+        &nbsp; begin&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; if(count==10) begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s2;<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else begin count=count+1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s1; end<br>
+        &nbsp;&nbsp; end <br>
+        &nbsp;s2: //make h_red on for 10sec <br>
+        &nbsp; begin&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; if(count==10) begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s3;<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else begin count=count+1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s2; end<br>
+        &nbsp;&nbsp; end&nbsp;&nbsp; <br>
+        &nbsp;s3: //make b_yellow on for 5sec <br>
+        &nbsp; begin&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; if(count==5) begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s0;<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else begin count=count+1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state=s3; end<br>
+        &nbsp;&nbsp; end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endcase<br>
+        &nbsp; end<br>
+        &nbsp;&nbsp;&nbsp; //determine output depends upon state<br>
+        &nbsp;&nbsp;&nbsp; always @(state) begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case(state)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s0: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_green=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_red=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_red=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s1: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_red=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_red=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_yellow=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s2: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_red=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_red=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_green=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s3: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_red=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_red=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        h_yellow=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_yellow=1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        b_green=0;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endcase<br>
+        &nbsp;&nbsp;&nbsp; end<br>
+        &nbsp;&nbsp;&nbsp; <br>
+        &nbsp; endmodule</div>
+    </div>
+    <div style="text-align: justify;"><br>
+    </div>
+    <div style="text-align: justify;">// Code your testbench here<br>
+      // or browse Examples<br>
+      <br>
+      module traffic_tb();<br>
+      &nbsp; reg rst,clk;<br>
+      <div style="text-align: left;">&nbsp; wire h_red, h_yellow,h_green, b_red,
+        b_yellow, b_green;</div>
+      <div style="text-align: left;">&nbsp;traffic_light L00
+        (rst,clk,h_red,h_yellow, h_green,b_red, b_yellow,b_green);</div>
+      &nbsp; initial begin<br>
+      &nbsp;&nbsp;&nbsp; $dumpfile("dump.vcd");<br>
+      &nbsp;&nbsp;&nbsp; $dumpvars;<br>
+      &nbsp;&nbsp;&nbsp; rst=1;clk=1;#20;<br>
+      &nbsp;&nbsp;&nbsp; rst=0;<br>
+      &nbsp;&nbsp;&nbsp; #500;<br>
+      &nbsp;&nbsp;&nbsp; $finish;<br>
+      &nbsp; end<br>
+      &nbsp; always #3 clk=!clk;<br>
+      endmodule</div>
+  </body>
+</html>

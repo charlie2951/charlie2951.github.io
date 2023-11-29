@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>lab06</title>
+  </head>
+  <body>
+    <p>Lab-06</p>
+    <p><i>Design of UP/DOWN synchronous counter using Behavioral modeling style</i></p>
+    <p><i>//design of up/down sync counter<br>
+        module upcounter(count,rst,clk);<br>
+        output reg [3:0] count;<br>
+        input rst,clk;<br>
+        initial count=0;<br>
+        always @(posedge clk)<br>
+        begin<br>
+        if (rst)<br>
+        count=0;<br>
+        else<br>
+        count=count+1;<br>
+        end<br>
+        endmodule<br>
+        <br>
+        <br>
+        //testbench<br>
+        //set runtime to 400ns<br>
+        module counter_tb();<br>
+        reg rst,clk;<br>
+        wire [3:0] count;<br>
+        upcounter L0(count,rst,clk);<br>
+        initial begin<br>
+        &nbsp; $dumpfile("dump.vcd");<br>
+        &nbsp; $dumpvars;<br>
+        clk=0;rst=1;<br>
+        #20;<br>
+        rst=0;<br>
+        #400;<br>
+        $finish;<br>
+        end<br>
+        always #10 clk=~clk;<br>
+        endmodule</i></p>
+    <p>*Note: Same program can be converted to down counter with <i><b>count=count-1</b></i>.</p>
+    <p style="text-align: justify;"><i><b>*In updown counter there is a extra
+          pin called updown. Depending upon status of this pin the counter will
+          count either in up or in down direction.<br>
+        </b></i></p>
+    <p><i><b>//up-down counter</b><br>
+        // Code your design here<br>
+        module upcounter(count,rst,clk,updown);<br>
+        output reg [3:0] count;<br>
+        input rst,clk,updown;<br>
+        initial count=0;<br>
+        always @(posedge clk)<br>
+        begin<br>
+        if (rst)<br>
+        count=0;<br>
+        else<br>
+        &nbsp; if(updown)<br>
+        count=count+1;<br>
+        &nbsp; else<br>
+        &nbsp;&nbsp;&nbsp; count=count-1;<br>
+        end<br>
+        endmodule<br>
+        <br>
+        //testbench<br>
+        module counter_tb();<br>
+        reg rst,clk,updown;<br>
+        wire [3:0] count;<br>
+        &nbsp; upcounter L0(count,rst,clk,updown);<br>
+        initial begin<br>
+        &nbsp; $dumpfile("dump.vcd");<br>
+        &nbsp; $dumpvars;<br>
+        clk=0;rst=1;updown=0;<br>
+        #20;<br>
+        rst=0;<br>
+        &nbsp; #100;<br>
+        &nbsp; updown=1;<br>
+        &nbsp; #200;<br>
+        &nbsp; updown=0;<br>
+        &nbsp; #400;<br>
+        &nbsp; $finish;<br>
+        end<br>
+        always #10 clk=~clk;<br>
+        endmodule<br>
+      </i></p>
+  </body>
+</html>
