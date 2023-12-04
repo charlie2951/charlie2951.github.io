@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<p>  Aspect ratio (mu*Cox): <input id="beta" value=20e-6></p>
+<p>  W/L: <input id="wl" value=10></p>
+<p>  Gate-Source Voltage (V<sub>GS</sub>)</p>
+<p> Start value of V<sub>GS</sub>: <input id="vgs1" value=2></p>
+<p> End value of V<sub>GS</sub>: <input id="vgs2" value=5></p>
+<p>  No. of  (V<sub>GS</sub>) sweep point: <input id="nvgs" value=3></p>
+<p>  Drain-Source Voltage (V<sub>DS</sub>)</P> 
+<p>  Start value of V<sub>DS</sub>: <input id="vds1" value=0></p>
+<p>  End value of V<sub>DS</sub>: <input id="vds2" value=5></p>
+<p>  No. of V<sub>DS</sub> sweep points: <input id="nvds" value=20></p>
+<p>  Threshold Voltage (V<sub>TH</sub>): <input id="vth" value=1></p>
+<p>  Channel length modulation factor (Lambda): <input id="lambda" value=0.01></p>
+<button onclick="plotgraph()">Plot Graph</button>
+<p></p><p></p>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+function plotgraph(){
+var xValues = [];
+var yValues1 = [];
+var yValues2 = [];
+var yValues3 = [];
+var yValues4 = [];
+var yValues5 = [];
+var vds1=parseFloat(document.getElementById("vds1").value);
+var vds2=parseFloat(document.getElementById("vds2").value);
+var nvds=parseInt(document.getElementById("nvds").value);
+let vgs1=parseFloat(document.getElementById("vgs1").value);
+let vgs2=parseFloat(document.getElementById("vgs2").value);
+let vth=parseFloat(document.getElementById("vth").value);
+var id;
+var beta=parseFloat(document.getElementById("beta").value);
+var wbyl=parseFloat(document.getElementById("wl").value);
+var lambda=parseFloat(document.getElementById("lambda").value);
+
+var vds=vds1;
+let nvgs=parseInt(document.getElementById("nvgs").value);
+let vginc=(vgs2-vgs1)/(nvgs-1);
+let vg=vgs1;
+if(nvgs>5){
+alert("Maximum 5 points allowed");
+exit(0);
+}
+for (let j=0;j<nvgs;j++){
+
+for (let index = 0; index < nvds+1; index++) {
+var vdsat=vg-vth;
+let vdeff=(vds*vdsat)/Math.sqrt(Math.pow(vds,2)+Math.pow(vdsat,2));
+    id=1e3*beta*wbyl*((vg-vth)*vdeff-(vdeff*vdeff/2))*(1+lambda*vds);
+	xValues[index]=vds.toFixed(2);
+	
+	if(j==0)
+	yValues1[index]=id;
+	if(j==1)
+	yValues2[index]=id;
+	if(j==2)
+	yValues3[index]=id;
+	if(j==3)
+	yValues4[index]=id;
+	if(j==4)
+	yValues5[index]=id;
+	
+	vds=vds+((vds2-vds1)/nvds);
+	
+	}
+	vds=0;
+	vg=vg+vginc;
+	}
+	
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: yValues1,
+      borderColor: "red",
+      fill: false
+    }, { 
+      data: yValues2,
+      borderColor: "green",
+      fill: false
+    }, { 
+      data: yValues3,
+      borderColor: "blue",
+      fill: false
+    },{ 
+      data: yValues4,
+      borderColor: "orange",
+      fill: false
+    },{ 
+      data: yValues5,
+      borderColor: "brown",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false},
+	scales: {
+      xAxes: [{ticks: {min: 0, max:vds}}],
+    },
+    scales: {
+      yAxes: [{ticks: {min: 0, max:id}}],
+    }
+  }
+});
+}
+
+</script>
+
+</body>
+</html>
+

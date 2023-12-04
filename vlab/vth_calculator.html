@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<script>
+function findvth()
+{
+  var phi_g, na, tox,eox,cox,phi_ch,res,vt1;
+  let ni=1.45e10;
+  let esi=8.854e-14*11.7;
+  let q=1.6e-19;
+  phi_g = parseFloat(document.getElementById("phi_g").value);
+  na = parseFloat(document.getElementById("na").value);
+  tox = parseFloat(document.getElementById("tox").value);
+  eox = parseFloat(document.getElementById("eox").value);
+  vsb = parseFloat(document.getElementById("vsb").value);
+  if(document.getElementById('nmos').checked == true) { 
+  phi_f=0.0259*Math.log(ni/na);
+  phi_ch=(4.15+0.55+Math.abs(phi_f));
+  }
+  else if(document.getElementById('pmos').checked == true) { 
+  phi_f=0.0259*Math.log(na/ni);
+  phi_ch=(4.15+0.55-Math.abs(phi_f));
+  }
+  else{
+  alert("Select MOSFET Type!")
+  }
+  cox=8.854e-14*eox/(1e-7*tox);
+  phi_ms=(phi_g-phi_ch);
+  let gamma=Math.sqrt(2*q*na*esi)/cox;
+  let qb0=-Math.sqrt(2*q*na*esi*Math.abs(2*phi_f));
+  if(document.getElementById('nmos').checked == true) {
+  res = phi_ms-(2*phi_f)-(qb0/cox);
+   vt1=res+gamma*(Math.sqrt(Math.abs(2*phi_f)+vsb)-Math.sqrt(Math.abs(2*phi_f)));
+  }
+  if(document.getElementById('pmos').checked == true) {
+  res = phi_ms+(2*phi_f)+(qb0/cox);
+  vt1=res-gamma*(Math.sqrt(Math.abs(2*phi_f-vsb))-Math.sqrt(Math.abs(2*phi_f)));
+  
+  }
+  document.getElementById("answer").innerHTML = vt1.toFixed(3);
+}
+</script>
+
+</head>
+<body>
+<h2 align="left"> Threshold Voltage Calculator for Long Channel MOSFET </h2>
+<p> MOSFET Type</p>
+<input type="radio" id="nmos" name="mostype" value="nmos"/> NMOS    
+<br>  
+<input type="radio" id="pmos" name="mostype" value="pmos"/> PMOS <br/> 
+<p>  Workfunction of Gate metal (in eV): <input id="phi_g" value=4.15></p>
+<p>  Substrate Doping Concentration(/cm3): <input id="na" value=1e16></p>
+<p>  Thickness of Gate oxide (in nm): <input id="tox" value=50></p>
+<p>  Permittivity of Gate oxide: <input id="eox" value=3.97></p>
+<p>  Source-Body Voltage(Vsb): <input id="vsb" value=0></p>
+<button onclick="findvth()">Calculate</button>
+<p>Threshold Voltage (V<sub>T0</sub>) in Volt: <output id="answer" ></p> 
+
+</body>
+</html>
