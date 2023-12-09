@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+.tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<script language="javascript">
+function SelectRedirect(){
+// ON selection of section this function will work
+//alert( document.getElementById('s1').value);
+
+switch(document.getElementById('s1').value)
+{
+case "Chapter-1":
+window.location="ch11.html";
+break;
+
+case "Chapter-2":
+window.location="../ch02/ch201.html";
+break;
+
+case "Chapter-3":
+window.location="../ch03/ch301.html";
+break;
+case "Chapter-4":
+window.location="../ch04/ch401.html";
+break;
+
+/// Can be extended to other different selections of SubCategory //////
+default:
+window.location="../"; // if no selection matches then redirected to home page
+break;
+}// end of switch 
+}
+////////////////// 
+</script>
+</head>
+
+<body>
+<p>&nbsp;</p>
+<h2 style="text-align: center;">Select the Chapter you want to Read...</h2>
+<p style="text-align: center;">&nbsp;</p>
+<div style="width:800px; margin:0 auto;">
+<form>
+<b> Select chapter from list </b>
+<select id = "s1" onChange="SelectRedirect();" >
+<option> Pick up a topic</option>
+<option> Chapter-1 </option>
+<option> Chapter-2 </option>
+<option> Chapter-3 </option>
+<option> Chapter-4 </option>
+</select>
+</form>
+</div>
+<p>&nbsp;</p>
+<h2 style="text-align: center;">List of Topics Covered and their Contents</h2>
+<p style="text-align: center;">&nbsp;</p>
+<table class="tg" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+<thead>
+  <tr>
+    <th class="tg-7btt">Chapter<br> Number</th>
+    <th class="tg-7btt">Topics Covered</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">01</td>
+    <td class="tg-0pky">Introduction, Moore's law, VLSI design flow, Y-chart,<br>Design strategy etc.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">02</td>
+    <td class="tg-0pky">Basic fabrication steps, NMOS and CMOS fabrication</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">03</td>
+    <td class="tg-0pky">Physics of MOS transistor, operation, Threshold voltage and it's<br>component, drain current calculation using gradual channel <br>approximation, scaling and its effect</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">04</td>
+    <td class="tg-0pky">MOS Inverters: Resistive load, active MOS load,<br>CMOS inverter, DC analysis, Noise margin etc.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">05</td>
+    <td class="tg-0pky">CMOS Logic design, NAND and NOR logic, complex CMOS<br>logic, layout, stick diagram, sizing of CMOS logic for best and<br>worst case.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">06</td>
+    <td class="tg-0pky">Transient analysis, delay definition, calculation of delay time (basic idea),<br>power dissipation in CMOS circuit, Super buffer design.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">07</td>
+    <td class="tg-0pky">CMOS dynamic logic, overview, operation, issues, Domino and <br>NORA logic</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">08</td>
+    <td class="tg-0pky">Pass transistor based logic, CMOS transmission gate, CPL etc.</td>
+  </tr>
+</tbody>
+</table>
+<p><span style="color: #ff0000;">*we are adding more contents on a regular basis</span></p>
+</body>
+</html>

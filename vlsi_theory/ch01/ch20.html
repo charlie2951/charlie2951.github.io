@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p.ex1 {
+  margin-right: 150px;
+}
+</style>
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  }
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+</style>
+</head><body>
+<p><strong>(3) Programmable design style:</strong></p>
+<p style="text-align: justify;">These are some of the most popular options among the designer and available in the market which are sold at a large volume at affordable cost. These options are adopted by designers for faster prototyping. Since they are designed for a specific application, sometimes they are also termed as "<em>Programmable ASIC</em>".</p>
+<p style="text-align: justify;">There are two basic types of programmable ASICs. One is a Programmable logic device (PLD) and another one is Field programmable gate array (FPGA).</p>
+<ul>
+<li style="text-align: justify;">PLDs use programmable AND, OR gates where one programmable switch is placed. The connection is established by activating these switches. They may be one-time programmable or can be re-programmable in nature. The designer only implements the logic function in a CAD tool and after synthesis, a bit file (binary file) is generated. The software-generated bit file takes care of defining interconnection between different logic gates by activating corresponding MOS switches. They are suitable for small to medium-scale logic design. Due to the use of programmable switches, generally, PLDs are not suitable for high-speed operations.&nbsp; Examples of PLDs: Programmable logic array (PLA), Programmable array logic (PAL), Complex programmable logic devices (CPLD).</li>
+</ul>
+<p style="text-align: center;">&nbsp;<img src="ch20.gif" alt="" width="300" height="300" style="max-width:100%;height:auto;" /></p>
+<ul>
+<li style="text-align: justify;">Field Programmable Gate Array (FPGA) is another popular choice for programmable ASIC design. Generally, the logic capacity of FPGA is higher than PLDs and also suitable for applications where a large logic capacity is required. FPGA uses SRAM, multiplexers as core components. The logic is implemented using the lookup table (LUT) approach. The combination of several LUTs, flip flops, and the mux is called a configurable logic block (CLB). Similar to PLDs, programmable interconnects are used to establish interconnections between different CLBs. Input/output buffers are used to connect data with external pins. Design time is faster than PLDs. Hardware description language is used to describe the logic function. After synthesis and successful placement, routing analysis, the bit file is transferred to FPGA and it is configured as the required logic functions.&nbsp; Xilinx, Altera, Actel are the manufacturer of FPGA. Popular FPGA categories are SPARTAN, VIRTEX series from Xilinx, and also others.&nbsp;</li>
+</ul>
+<p style="text-align: center;"><img src="ch20_1.jpg" alt="Architecture of CLB" width="300" height="300" style="max-width:100%;height:auto;" /></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="ch20_2.jpg" alt="Basic FPGA Architecture" width="400" height="400" style="max-width:100%;height:auto;" /></p>
+<p style="text-align: left;">*End of Chapter-1. More content will be added in the future.</p>
+<p style="text-align: right;">
+<a href="ch19.html" class="previous round">&#8249;</a>
+<a href="#" class="next round">&#8250;</a></p>
+</body>
+</html>
+

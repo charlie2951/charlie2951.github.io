@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p.ex1 {
+  margin-right: 150px;
+}
+</style>
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  }
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+</style>
+</head><body>
+<h1>C. Design Strategy</h1>
+<p style="text-align: justify;">From our previous discussions, it is clear that the VLSI design process is complex in nature.&nbsp; There is some useful technique to reduce the design complexity. These are discussed below.</p>
+<ul>
+<li style="text-align: justify;"><strong>Design Hierarchy:</strong> This is similar to the <em>divide and rule</em> approach. A larger system with unmanageable complexity is further divided into smaller parts. This decomposition process will continue until and unless the complexity of the generated blocks is manageable. For example, one eight bit full adder can be decomposed into eight single bit adder. Now it is much more easier to design a single bit adder. Each single bit adder can be further divided in to sum and carry part. Finally, at the end of design process, all eight adders are connected and form the eight bit adder. The hierarchy process is shown in figure below.</li>
+</ul>
+<p style="text-align: center;"><img src="ch15.jpg" alt="" width="284" height="284" style="max-width:100%;height:auto;"/></p>
+<ul>
+<li style="text-align: justify;"><strong>Regularity:</strong>&nbsp; At the time of decomposition, the designer must look for not only simple blocks but also similar types of block as much as possible. This strategy reduces the design time. For example, if one designer design a single bit adder, then same design will be repeated to form complete eight bit adder quickly.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li style="text-align: justify;"><strong>Modularity:</strong> After decomposition, the generated sub modules must have their well defined , independent functions and interfaces. This property permits the designer to test each sub module independently and to allow design of multiple component parallelly (since each modules are independent to each other).</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li style="text-align: justify;"><strong>Locality:</strong> This property ensure that the interconnection between sub-modules should be within local places. That means, the modules should be placed closely to each other to avoid long distance wiring and thus reduces interconnect delays and also fabrication cost.</li>
+</ul>
+<p style="text-align: right;">
+<a href="ch14.html" class="previous round">&#8249;</a>
+<a href="ch16.html" class="next round">&#8250;</a></p>
+</body>
+</html>

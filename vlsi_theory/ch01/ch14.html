@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p.ex1 {
+  margin-right: 150px;
+}
+</style>
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  }
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+</style>
+</head><body>
+<h2>VLSI Design Flow Contd...</h2>
+<p style="text-align: justify;">The architectural or functional design also tells about the input-output pins of the system.&nbsp; Generally, some verification steps are used after every design step. If the design does not satisfy the system specifications, then the designer changes the functional block's architecture to get a more efficient design.</p>
+<p style="text-align: justify;">The next step after the functional design is logic design. This step basically explores all the functional blocks and they are represented by their logic level descriptions i.e. in terms of gates, flip-flops, registers, etc. If required, the designer may divide large logical blocks into several smaller parts to manage the design complexity. After the successful logic design, testing and verification are done to ensure the proper operation of the system. For digital systems, generally, hardware description languages (HDL) are involved.</p>
+<p style="text-align: justify;">In the next steps, the logic level description of the system is represented by the circuit level description. For example, the logic gates are now represented using MOS transistors at the circuit level. Again there is a testing and verification steps are followed to ensure correctness and also to meet the design metrics such as delay, power, area requirement, etc. Several CAD tools use SPICE to simulate the circuit and to verify the circuit level description.</p>
+<p style="text-align: justify;">Finally, in the physical design step, all transistors are being replaced by their physical description i.e. layout. This step is very crucial and design metrics such as delay and area requirement strongly depend upon this step. A layout vs schematic analysis is performed to compare layout generated circuit results with schematic level circuit performance. If the post-layout simulation does not meet the design criteria which were mentioned in 1st step i.e. architecture level, the designer may modify the layout to satisfy these matrices.</p>
+<p style="text-align: justify;">Although the design process is described in a very brief way with a&nbsp; couple of steps followed by top-down design methodology, the actual design flow involved several steps. In between two steps as shown in the flowchart, there exist several smaller steps. Most of the steps are iterative in nature and for a successful design, a top-down with the bottom-up approach is followed.</p>
+<p style="text-align: right;">
+<a href="ch13.html" class="previous round">&#8249;</a>
+<a href="ch15.html" class="next round">&#8250;</a></p>
+</body>
+</html>
